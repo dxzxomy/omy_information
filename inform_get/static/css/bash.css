@@ -1,0 +1,16 @@
+
+.line{
+    padding: 0 20px 0;
+    margin: 20px 0;
+    line-height: 1px;
+    border-left: 300px solid #0f0f0f;
+    border-right: 300px solid #0f0f0f;
+    text-align: center;
+}
+.form-control {
+    height: 32px;
+    font-size :12px;
+}
+.btn {
+    font-size: 12px;
+}

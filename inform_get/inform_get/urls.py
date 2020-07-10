@@ -20,6 +20,8 @@ from django.views.static import serve
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.windowsad.urls', namespace="wad")),
+    url(r'^', include(('apps.accounts.urls','accounts'), namespace="accounts")),
+    url(r'^api/', include(('apps.apis.urls','apis'), namespace="apis")),
+    url(r'^cicd/', include(('apps.cicd.urls', 'cicd'), namespace='cicd'))
 
 ]

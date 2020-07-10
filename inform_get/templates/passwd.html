@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block active_pwd_extends%}active{%endblock%}
+
+{% block content %}
+
+        <div class="line">修改密码</div>
+        <!-- Small boxes (Stat box) -->
+        <div class="row" style="width:450px; margin-left: 370px; margin-bottom: 50px; margin-top: 50px;">
+            {% include 'change_passwd.html' %}
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="line">重置密码</div>
+        <div class="row" style="width:480px; margin-left: 370px; margin-top: 50px;">
+            {% include 'reset_passwd.html' %}
+        </div>
+
+
+{% endblock %}

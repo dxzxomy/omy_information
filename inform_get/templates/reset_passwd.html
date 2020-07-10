@@ -1,0 +1,21 @@
+
+
+    <form method="POST" style="width:60%;">
+        {% csrf_token %}
+{#      <div class="form-group">#}
+{#        <label>用户名</label>#}
+{#        <input type="text" class="form-control" id="username" placeholder="username">#}
+{#      </div>#}
+      <div class="form-group">
+        <input type="password" class="form-control" name="newpassword3" id="npsw1" placeholder="新密码">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" name="newpassword4" id="cpsw1" placeholder="新密码">
+      </div>
+      <div class="form-group">
+          <input type="text" class="form-control" name="mobile_captcha" id="mobile_captcha" placeholder="短信验证码" style="width: 60%; display:inline;">
+          <input type="button" class="btn btn-default" id="btn3" value="获取手机验证码">
+      </div>
+        <button type="button" class="btn btn-default" id="btn4" style="float: right">提交</button></br>
+        <span id="ret_info"></span>
+    </form>
