@@ -133,7 +133,7 @@ var DataLengthProbe = require('./stream/DataLengthProbe');
  * @param {number} compressedSize the size of the data compressed.
  * @param {number} uncompressedSize the size of the data after decompression.
  * @param {number} crc32 the crc32 of the decompressed file.
- * @param {object} compression the type of compression, see lib/compressions.js.
+ * @param {object} compression the type of compression, see libs/compressions.js.
  * @param {String|ArrayBuffer|Uint8Array|Buffer} data the compressed data.
  */
 function CompressedObject(compressedSize, uncompressedSize, crc32, compression, data) {
@@ -217,7 +217,7 @@ exports.DEFLATE = require('./flate');
 var utils = require('./utils');
 
 /**
- * The following functions come from pako, from pako/lib/zlib/crc32.js
+ * The following functions come from pako, from pako/libs/zlib/crc32.js
  * released under the MIT license, see pako https://github.com/nodeca/pako/
  */
 
@@ -2763,7 +2763,7 @@ var nodejsUtils = require('./nodejsUtils');
 var GenericWorker = require('./stream/GenericWorker');
 
 /**
- * The following functions come from pako, from pako/lib/utils/strings
+ * The following functions come from pako, from pako/libs/utils/strings
  * released under the MIT license, see pako https://github.com/nodeca/pako/
  */
 
@@ -4554,11 +4554,11 @@ function race(iterable) {
 // Top level file is just a mixin of submodules & constants
 'use strict';
 
-var assign    = require('./lib/utils/common').assign;
+var assign    = require('./libs/utils/common').assign;
 
-var deflate   = require('./lib/deflate');
-var inflate   = require('./lib/inflate');
-var constants = require('./lib/zlib/constants');
+var deflate   = require('./libs/deflate');
+var inflate   = require('./libs/inflate');
+var constants = require('./libs/zlib/constants');
 
 var pako = {};
 

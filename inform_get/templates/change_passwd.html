@@ -1,18 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
 
-    <form method="POST" style="width:60%;">
-        {% csrf_token %}
-      <div class="form-group">
-        <input type="password" class="form-control" name="oldpassword" id="psw" placeholder="旧密码">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" name="newpassword1" id="npsw" placeholder="新密码">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" name="newpassword2" id="cpsw" placeholder="确认新密码">
-      </div>
-        <button type="button" class="btn btn-default" id="btn1" style="float: right">提交</button></br>
-        <span id="ret_info"></span>
-    </form>
+        <!-- Small boxes (Stat box) -->
+        <div  class="row">
+            <form method="POST" style="width:300px; margin:100px auto">
+            {% csrf_token %}
+                <div class="form-group">
+                    <input type="password" class="form-control" name="oldpassword" id="psw" placeholder="旧密码">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="newpassword1" id="npsw" placeholder="新密码">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="newpassword2" id="cpsw" placeholder="确认新密码">
+                </div>
+                <button type="button" class="btn btn-default" id="btn1" style="float: right">提交</button></br>
+                <span id="ret_info"></span>
+            </form>
+        </div>
+
+{% endblock %}
 
 

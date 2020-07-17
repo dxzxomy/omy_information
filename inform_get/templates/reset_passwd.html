@@ -1,21 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>bootschool.net</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/log_in/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/log_in/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/log_in/css/main.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="wrap-login">
+        <div class="wrap-form-title" style="background-image: url(/static/assets/log_in/images/banner.jpg);">
+            <span class="form-title">重 置</span>
+        </div>
 
+        <form class="login-form validate-form" method="POST">
+            {% csrf_token %}
+            <div class="wrap-input validate-input m-b-26" data-validate="用户名不能为空">
+                <label class="label-input">新密码:</label>
+                <input class="input" type="text" id="username" name="username" autocomplete="off" placeholder="请输入用户名">
+                <span class="focus-input"></span>
+            </div>
 
-    <form method="POST" style="width:60%;">
-        {% csrf_token %}
-{#      <div class="form-group">#}
-{#        <label>用户名</label>#}
-{#        <input type="text" class="form-control" id="username" placeholder="username">#}
-{#      </div>#}
-      <div class="form-group">
-        <input type="password" class="form-control" name="newpassword3" id="npsw1" placeholder="新密码">
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" name="newpassword4" id="cpsw1" placeholder="新密码">
-      </div>
-      <div class="form-group">
-          <input type="text" class="form-control" name="mobile_captcha" id="mobile_captcha" placeholder="短信验证码" style="width: 60%; display:inline;">
-          <input type="button" class="btn btn-default" id="btn3" value="获取手机验证码">
-      </div>
-        <button type="button" class="btn btn-default" id="btn4" style="float: right">提交</button></br>
-        <span id="ret_info"></span>
-    </form>
+            <div class="wrap-input validate-input m-b-18" data-validate="密码不能为空">
+                <label class="label-input">新密码:</label>
+                <input class="input" type="password" id="npass" name="npass" placeholder="请输入密码">
+                <span class="focus-input"></span>
+            </div>
+
+            <div class="wrap-input validate-input m-b-18" data-validate="密码不能为空">
+                <label class="label-input">短信验证码:</label>
+                <input class="input" type="text" id="mobile_captcha" name="mobile_captcha" placeholder="短信验证码">
+                <span class="focus-input" ></span>
+            </div>
+
+            <div style="display: inline-block; margin-bottom: 20px;" >
+{#                <input  id="mobile_captcha" type="button" name="mobile_captcha" value="获取短信验证码" >#}
+                <input onclick="sendmessage(this,60);" type="button" value="发送短信"  class="btn btn-info" style="height:38px;width: 125px;"/>
+                <a href="{% url 'accounts:login' %}" class="txt1" style="margin-left: 160px">登录</a>
+            </div>
+
+            <div class="wrapper-form-btn">
+                <button class="login-form-btn">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+
+<script>
+
+</script>
+
+</body>
+</html>

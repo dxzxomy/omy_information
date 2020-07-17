@@ -14,3 +14,10 @@
 .btn {
     font-size: 12px;
 }
+
+a {
+    color:rgba(0,0,0,.5);
+}
+a:hover {
+    color: #252525;
+}

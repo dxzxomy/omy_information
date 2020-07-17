@@ -4,5 +4,5 @@ from . import views
 from django.views.static import serve
 
 urlpatterns = [
-
+    url(r'^user_info/', views.users_ad_info, name='user_info'),
 ]

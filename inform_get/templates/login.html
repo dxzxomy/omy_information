@@ -1,10 +1,56 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>登录</title>
+    <title>扁平而简洁的登录页面模板-bootschool.net</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/log_in/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/log_in/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/log_in/css/main.css' %}">
 </head>
 <body>
+<div class="container">
+    <div class="wrap-login">
+        <div class="wrap-form-title" style="background-image: url(/static/assets/log_in/images/banner.jpg);">
+            <span class="form-title">登 录</span>
+        </div>
+
+        <form class="login-form validate-form" method="POST">
+            {% csrf_token %}
+            <div class="wrap-input validate-input m-b-26" data-validate="用户名不能为空">
+                <label class="label-input">用户名:</label>
+                <input class="input" type="text" id="username" name="username" autocomplete="off" placeholder="请输入用户名">
+                <span class="focus-input"></span>
+            </div>
+
+            <div class="wrap-input validate-input m-b-18" data-validate="密码不能为空">
+                <label class="label-input">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
+                <input class="input" type="password" id="pass" name="pass" placeholder="请输入密码">
+                <span class="focus-input"></span>
+            </div>
+
+            <div class="flex-sb-m w-full p-b-30">
+                <div class="contact-form-checkbox">
+                    <input class="input-checkbox" id="ckb1" type="checkbox" name="remember-me">
+                    <label class="label-checkbox" for="ckb1">记住我</label>
+                </div>
+                <div>
+                    <a href="{% url 'accounts:reset_passwd' %}" class="txt1">忘记密码？</a>
+                </div>
+            </div>
+
+            <div class="wrapper-form-btn">
+                <button class="login-form-btn">登 录</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+{#<script src="{% static 'assets/log_in/js/main.js' %}"></script>#}
+<script>
+
+</script>
 
 </body>
 </html>

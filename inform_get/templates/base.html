@@ -31,6 +31,7 @@
 {#  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">#}
 
     <link rel="stylesheet" href="{% static 'css/bash.css' %}">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -49,6 +50,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
+
+
+
     </ul>
 
     <!-- SEARCH FORM -->
@@ -64,11 +68,28 @@
     </form>
 
     <!-- Right navbar links -->
+{#      {% if request.user.is_authenticated %}#}
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-
-      <!-- Notifications Dropdown Menu -->
-
+      <li class="dropdown" style="float: right;">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <img alt="" src="#" height="30px">
+            <span class="username">
+                {% if request.user.is_authenticated %}
+                    {{ user.username }}
+                {% endif %}
+            </span>
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" style="rgba(0,0,0,.5);">
+            <div class="log-arrow-up"></div>
+            <li><a class="" href="#" > 个人资料 </a></li>
+            <li><a class="" href="#"> 修改密码 </a></li>
+            <li><a class="" href="#"> 我的回答 </a></li>
+            <li><a class="" href="#"> 我的收藏 </a></li>
+            <li><a class="" href="#"> 我的贡献 </a></li>
+            <li><a class="" href="{% url 'accounts:logout' %}"> 退出 </a></li>
+        </ul>
+    </li>
 
     </ul>
   </nav>
@@ -91,7 +112,7 @@
           <img src="{% static 'assets/adminlte/dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block" style="font-size: 16px;">{{ user.last_name }}</a>
         </div>
       </div>
 
@@ -101,7 +122,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link active trees">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 ADmon
@@ -110,38 +131,41 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-{#                <a href="{% url 'accounts:pwd' %}" class="nav-link {%block active_pwd_extends%}{%endblock%}">#}
-<a href="{% url 'accounts:pwd' %}" class="nav-link">
+                <a href="{% url 'accounts:change_passwd' %}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>修改/重置密码</p>
+                  <p>修改密码</p>
                 </a>
               </li>
               <li class="nav-item">
-{#                <a href="{% url 'accounts:ldap_set' %}" class="nav-link {%block active_set_extends%}{%endblock%}">#}
+                {% if user.is_authenticated and user.is_superuser %}
                 <a href="{% url 'accounts:ldap_set' %}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>同步设置(管理员)</p>
                 </a>
               </li>
+            {% endif %}
               <li class="nav-item">
-{#                <a href="{% url 'accounts:pause' %}" class="nav-link {%block active_pau_extends%}{%endblock%}">#}
+                {% if user.is_authenticated and user.is_superuser %}
                 <a href="{% url 'accounts:pause' %}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>暂停/删除用户(管理员)</p>
                 </a>
               </li>
+            {% endif %}
               <li class="nav-item">
-{#                <a href="{% url 'accounts:option_rec' %}" class="nav-link {% block active_opt_extends %}{%endblock%}">#}
-                <a href="{% url 'accounts:option_rec' %}" class="nav-link">
+                  {% if user.is_authenticated and user.is_superuser %}
+                      <a href="{% url 'accounts:option_rec' %}" class="nav-link">
+
                   <i class="far fa-circle nav-icon"></i>
                   <p>操作记录(管理员)</p>
                 </a>
               </li>
+            {% endif %}
             </ul>
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link trees">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 CICD
@@ -151,23 +175,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
 {#                <a href="{% url 'cicd:user_info' %}" class="nav-link {% block active_usr_extends %}{% endblock %}">#}
-                  <a href="{% url 'cicd:user_info' %}" class="nav-link">
+                  <a href="{% url 'cicd:user' %}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                   <p>用户信息</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
-                </a>
-              </li>
-
-
             </ul>
           </li>
-
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -256,23 +270,16 @@
 
 <script>
     $(function () {
-        $('.nav-sidebar li:not(.has-treeview)>a').on('click', function () {
-            var $parent = $(this).addClass('active');
-            $parent.siblings('.has-treeview').find('> a').trigger('click');
-            $parent.siblings().removeClass('active')
-        })
-        $(window).on('load', function () {
-            $('.nav-sidebar a').each(function ( ) {
-                if(this.href === window.location.href) {
-                    $(this).addClass('active')
-                            .closest('has-treeview').addClass('.menu-open')
-                            .closest('ul.has-treeview>a').addClass('active');
-                }
-            })
-        })
-    })
-
-
+        $('.nav-sidebar').find("li").removeClass('menu-open');
+        $('.nav-sidebar').find("a").removeClass('active');
+        $('.nav-sidebar').find("a").each(function () {
+            if(this.href === window.location.href) {
+                $(this).addClass('active');
+                $(this).closest('.has-treeview').addClass('menu-open');
+                $('.nav-sidebar').find('.menu-open').children('.trees').addClass('active');
+            }
+        });
+    });
 </script>
 
 </body>

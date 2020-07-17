@@ -5,31 +5,42 @@
 {% block active_usr_extends %}active{% endblock %}
 
 {%  block content %}
-
+<div class="row">
 <table class="table table-bordered">
     <thead>
         <tr>
           <th>用户名</th>
           <th>英文名</th>
           <th>职位</th>
-          <th>详细信息</th>
           <th>手机号</th>
+          <th>邮箱</th>
           <th>创建时间</th>
           <th>修改时间</th>
+          <th>详细信息</th>
         </tr>
     </thead>
     <tbody>
+    {% for item in ret_info %}
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
 
+        <td>{{ item.name }}</td>
+        <td>{{ item.username }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.mobile }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.hireDate }}</td>
+        <td>{{ item.changed }}</td>
+        <td>{{ item.userdn }}</td>
+    </tr>
+    {% endfor %}
     </tbody>
 </table>
+</div>
 
+{% endblock %}
+
+{% block load_use_js %}
+    <script>
+
+    </script>
 {% endblock %}

@@ -278,7 +278,7 @@ module.exports = {
 	             *
 	             * @example
 	             *
-	             *     var MyType = CryptoJS.lib.Base.extend({
+	             *     var MyType = CryptoJS.libs.Base.extend({
 	             *         field: 'value',
 	             *
 	             *         method: function () {
@@ -335,7 +335,7 @@ module.exports = {
 	             *
 	             * @example
 	             *
-	             *     var MyType = CryptoJS.lib.Base.extend({
+	             *     var MyType = CryptoJS.libs.Base.extend({
 	             *         init: function () {
 	             *             // ...
 	             *         }
@@ -398,9 +398,9 @@ module.exports = {
 	         *
 	         * @example
 	         *
-	         *     var wordArray = CryptoJS.lib.WordArray.create();
-	         *     var wordArray = CryptoJS.lib.WordArray.create([0x00010203, 0x04050607]);
-	         *     var wordArray = CryptoJS.lib.WordArray.create([0x00010203, 0x04050607], 6);
+	         *     var wordArray = CryptoJS.libs.WordArray.create();
+	         *     var wordArray = CryptoJS.libs.WordArray.create([0x00010203, 0x04050607]);
+	         *     var wordArray = CryptoJS.libs.WordArray.create([0x00010203, 0x04050607], 6);
 	         */
 	        init: function (words, sigBytes) {
 	            words = this.words = words || [];
@@ -513,7 +513,7 @@ module.exports = {
 	         *
 	         * @example
 	         *
-	         *     var wordArray = CryptoJS.lib.WordArray.random(16);
+	         *     var wordArray = CryptoJS.libs.WordArray.random(16);
 	         */
 	        random: function (nBytes) {
 	            var words = [];
@@ -932,7 +932,7 @@ module.exports = {
 	         *
 	         * @example
 	         *
-	         *     var SHA256 = CryptoJS.lib.Hasher._createHelper(CryptoJS.algo.SHA256);
+	         *     var SHA256 = CryptoJS.libs.Hasher._createHelper(CryptoJS.algo.SHA256);
 	         */
 	        _createHelper: function (hasher) {
 	            return function (message, cfg) {
@@ -951,7 +951,7 @@ module.exports = {
 	         *
 	         * @example
 	         *
-	         *     var HmacSHA256 = CryptoJS.lib.Hasher._createHmacHelper(CryptoJS.algo.SHA256);
+	         *     var HmacSHA256 = CryptoJS.libs.Hasher._createHmacHelper(CryptoJS.algo.SHA256);
 	         */
 	        _createHmacHelper: function (hasher) {
 	            return function (message, key) {
@@ -3027,7 +3027,7 @@ module.exports = $export;
 	         *
 	         * @example
 	         *
-	         *     var AES = CryptoJS.lib.Cipher._createHelper(CryptoJS.algo.AES);
+	         *     var AES = CryptoJS.libs.Cipher._createHelper(CryptoJS.algo.AES);
 	         */
 	        _createHelper: (function () {
 	            function selectCipherStrategy(key) {
@@ -3371,7 +3371,7 @@ module.exports = $export;
 	         *
 	         * @example
 	         *
-	         *     var cipherParams = CryptoJS.lib.CipherParams.create({
+	         *     var cipherParams = CryptoJS.libs.CipherParams.create({
 	         *         ciphertext: ciphertextWordArray,
 	         *         key: keyWordArray,
 	         *         iv: ivWordArray,
@@ -3505,9 +3505,9 @@ module.exports = $export;
 	         *
 	         * @example
 	         *
-	         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key);
-	         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key, { iv: iv });
-	         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key, { iv: iv, format: CryptoJS.format.OpenSSL });
+	         *     var ciphertextParams = CryptoJS.libs.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key);
+	         *     var ciphertextParams = CryptoJS.libs.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key, { iv: iv });
+	         *     var ciphertextParams = CryptoJS.libs.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key, { iv: iv, format: CryptoJS.format.OpenSSL });
 	         */
 	        encrypt: function (cipher, message, key, cfg) {
 	            // Apply config defaults
@@ -3547,8 +3547,8 @@ module.exports = $export;
 	         *
 	         * @example
 	         *
-	         *     var plaintext = CryptoJS.lib.SerializableCipher.decrypt(CryptoJS.algo.AES, formattedCiphertext, key, { iv: iv, format: CryptoJS.format.OpenSSL });
-	         *     var plaintext = CryptoJS.lib.SerializableCipher.decrypt(CryptoJS.algo.AES, ciphertextParams, key, { iv: iv, format: CryptoJS.format.OpenSSL });
+	         *     var plaintext = CryptoJS.libs.SerializableCipher.decrypt(CryptoJS.algo.AES, formattedCiphertext, key, { iv: iv, format: CryptoJS.format.OpenSSL });
+	         *     var plaintext = CryptoJS.libs.SerializableCipher.decrypt(CryptoJS.algo.AES, ciphertextParams, key, { iv: iv, format: CryptoJS.format.OpenSSL });
 	         */
 	        decrypt: function (cipher, ciphertext, key, cfg) {
 	            // Apply config defaults
@@ -3576,7 +3576,7 @@ module.exports = $export;
 	         *
 	         * @example
 	         *
-	         *     var ciphertextParams = CryptoJS.lib.SerializableCipher._parse(ciphertextStringOrParams, format);
+	         *     var ciphertextParams = CryptoJS.libs.SerializableCipher._parse(ciphertextStringOrParams, format);
 	         */
 	        _parse: function (ciphertext, format) {
 	            if (typeof ciphertext == 'string') {
@@ -3659,8 +3659,8 @@ module.exports = $export;
 	         *
 	         * @example
 	         *
-	         *     var ciphertextParams = CryptoJS.lib.PasswordBasedCipher.encrypt(CryptoJS.algo.AES, message, 'password');
-	         *     var ciphertextParams = CryptoJS.lib.PasswordBasedCipher.encrypt(CryptoJS.algo.AES, message, 'password', { format: CryptoJS.format.OpenSSL });
+	         *     var ciphertextParams = CryptoJS.libs.PasswordBasedCipher.encrypt(CryptoJS.algo.AES, message, 'password');
+	         *     var ciphertextParams = CryptoJS.libs.PasswordBasedCipher.encrypt(CryptoJS.algo.AES, message, 'password', { format: CryptoJS.format.OpenSSL });
 	         */
 	        encrypt: function (cipher, message, password, cfg) {
 	            // Apply config defaults
@@ -3695,8 +3695,8 @@ module.exports = $export;
 	         *
 	         * @example
 	         *
-	         *     var plaintext = CryptoJS.lib.PasswordBasedCipher.decrypt(CryptoJS.algo.AES, formattedCiphertext, 'password', { format: CryptoJS.format.OpenSSL });
-	         *     var plaintext = CryptoJS.lib.PasswordBasedCipher.decrypt(CryptoJS.algo.AES, ciphertextParams, 'password', { format: CryptoJS.format.OpenSSL });
+	         *     var plaintext = CryptoJS.libs.PasswordBasedCipher.decrypt(CryptoJS.algo.AES, formattedCiphertext, 'password', { format: CryptoJS.format.OpenSSL });
+	         *     var plaintext = CryptoJS.libs.PasswordBasedCipher.decrypt(CryptoJS.algo.AES, ciphertextParams, 'password', { format: CryptoJS.format.OpenSSL });
 	         */
 	        decrypt: function (cipher, ciphertext, password, cfg) {
 	            // Apply config defaults

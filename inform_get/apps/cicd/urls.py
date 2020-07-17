@@ -5,6 +5,6 @@ from django.views.static import serve
 
 urlpatterns = [
     url(r'^$', views.get_ou, name='get_ou'),
-    url(r'^user', views.user_info, name='user_info')
+    url(r'^users', views.users, name='users')
 
 ]
